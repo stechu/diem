@@ -120,9 +120,8 @@ impl StateSynchronizer {
         waypoint: Waypoint,
         reconfig_event_subscriptions: Vec<ReconfigSubscription>,
     ) -> Self {
-        let runtime = Builder::new()
+        let runtime = Builder::new_multi_thread()
             .thread_name("state-sync")
-            .threaded_scheduler()
             .enable_all()
             .build()
             .expect("[state synchronizer] failed to create runtime");
